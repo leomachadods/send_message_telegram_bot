@@ -51,8 +51,6 @@ log.setLevel(logging.DEBUG)
 # ╚══════╝╚══════╝ ╚═════╝ ╚═╝     ╚═╝╚═╝  ╚═╝ ╚═════╝╚═╝  ╚═╝╚═╝  ╚═╝╚═════╝  ╚═════╝ ╚═════╝ ╚══════╝
 #=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 
-horarios = ['12:08', '12:09', '12:10', '12:11']
-
 class TelegramMessager():
     ''' (en) Class responsible for sending messages to users on telegram
   To use the methods, plese use threads with the methods present in the class!
