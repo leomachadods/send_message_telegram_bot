@@ -75,9 +75,9 @@ class TelegramMessager():
         self.chat_id = chat_id
         self.schedule_time = schedule_time
 
-    def th_add_message_to_queue(self, msg=sample_msg, keyboard_inline=None) -> None:
+    def th_add_message_to_queue(self, msg=sample_msg, inline_keyboard=None) -> None:
         ''' msg: Message that you want to send to user or group telegram
- keyboard_inline: keyboard_inline JSON format:
+ inline_keyboard: inline_keyboard JSON format:
  
  sample_keyboard = {
                  "inline_keyboard": [
@@ -89,7 +89,10 @@ class TelegramMessager():
                          {"text": "Salas Sinais 💎", "callback_data": "3"}
                     ]
                  ]
-             } '''
+             } 
+ Example:
+ Thread(target=TelegramMessager.th_add_message_to_queue, kwargs={'inline_keyboard': sample_keyboard})
+             '''
         log.info('Queue initialized...')
         while True:
             hour_minute = datetime.datetime.now().strftime('%H:%M')
@@ -98,7 +101,7 @@ class TelegramMessager():
             if hour_minute in self.schedule_time:
                 try:
                     log.info('Trying to send message via queue')
-                    queue.put((self.chat_id, msg, keyboard_inline))
+                    queue.put((self.chat_id, msg, inline_keyboard))
                     time.sleep(60)
                 except Exception as e:
                     log.error(e)
